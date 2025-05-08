@@ -1,0 +1,26 @@
+examination_setter_task:
+  description: >
+    Create a list of questions based on {module} and {topic} to be more specific and should be aimed towards grade {grade}
+    Use the provided web search tool to get more information on past exam papers but to use this tool efficiently you must pass a website URL as a string
+    ONLY use material that is based in England and is suitable for exams which will be conducted in England
+    When generating the question, make sure that you write it in a way in which a 15 year old can understand.
+    Be sure to only include questions that the {exam_board} exam board would include
+    Be sure to include any images, picture or text references within the question
+
+    Here is a website which you will be useful when finding information on example {exam_board} exam questions:
+    https://www.bbc.co.uk/bitesize/levels/z98jmp3
+
+    Each question should also have an estimated time (estimated_time) and a maximum score (maximum_score) that can be acheived.
+    
+  expected_output: >
+    A list of questions with an "estimated_time" property which the completer should spend on each question. 
+    The actual question text should use a "question_text" property
+    The output should be in JSON format
+    Follow the below format
+
+    DO NOT INCLUDE ```json OR ``` in the output
+
+    {{
+      "questions": "The list of questions",
+    }}
+  agent: examination_setter

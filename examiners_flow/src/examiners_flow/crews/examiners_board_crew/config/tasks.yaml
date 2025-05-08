@@ -1,0 +1,54 @@
+examination_board_member_task:
+  description: >
+    Mark the answers for the submitted paper below {module} and {topic} to be more specific
+    Go through each question and determine if the anwser given is suitable
+
+    Each question has been given a maximum score that can be acheieved. When you mark each question, give the answer a score based on completness.
+    Break down the answer and give a mark for each point that you find is a suffieicent partial or full answer (You do not need to include the breakdown in the final output)
+
+
+    Once you have marked ALL questions, give a grade based on the UK GCSE grading system here:
+    https://www.openstudycollege.com/gcse-grading-system-explained
+
+    The grade should reflect the anwser and take into consideration any partial answers
+
+    An appropriate grade based on the UK GCSE grading system (9-1 scale), assuming these questions represents the entire exam.
+
+    Also make sure that you take the exam paper grade below into consideration and determine if the anwser either:
+    - Is good enough for a grade above the paper grade
+    - Is below the paper grade
+    - Meets paper expectations
+
+    DO NOT INCLUDE ANY IMAGEPATHS
+    
+    -- Paper grade ---
+    {grade}
+    -- end of paper grade
+
+    -- Submitted paper follows--
+    {questions}
+    -- end of submitted paper --
+  expected_output: >
+    If you feel the given answer is incomplete or could be improved, provide this in your feedback
+    Also provide an 'example_answer' property that you feel would acheive the highest score
+    Attach your feedback to the current structure on each question. Keep in short an simple to understand. Make sure that a 15 year can understand it
+    Provide a structure in how the question should be answered to attain the best possible score
+    
+    For each question that you have marked, be sure to provide the below properties:
+    - question_text;
+    - question_answer
+    - feedback
+    - example_answer
+
+
+    The output should be in JSON format
+
+    DO NOT INCLUDE ```json OR ``` in the output
+
+    Follow the below format
+
+    {{
+      "feedback": "This will contain the list of questions with the additional parameters",
+      "grade": "This will contain the overall grade"
+    }}
+  agent: examination_board_member

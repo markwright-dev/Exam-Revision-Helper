@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+
+    
+
+    <script
+        src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+        crossorigin="anonymous"></script>
+    <title>AI Exams</title>
+    <style>
+        h1 {
+            background-color: #bfd9ff;
+            margin-top: 10px;
+            padding: 10px;
+            color: #4b6aa5;
+            box-shadow: 0px 0px 4px 2px #a2beff;
+        }
+        .form-field {
+            background-color: #f1f7ff;
+            padding: 10px;
+            border: 1px solid #dfe9f5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container overflow-hidden">
+        <div class="row">
+            <div class="col col-12 col-sm-12 text-center">
+                <h1><i class="fa-solid fa-robot color-blue"></i> Mock Exam Generator</h1>
+                
+            </div>
+        </div>
+        
+        <div class="spinner col col-12 text-center mt-5 hide">
+            <div class="spinner-border text-primary" style="width: 6rem; height: 6rem;"  role="status">
+                <span class="sr-only"></span>
+            </div>
+        </div>
+        <div class="exam_form mt-5">
+            
+
+            <p>Complete the form below and click on the generate mock button</p>
+            <div class="status hide"></div>
+            <div class="mb-3 form-field">
+                <label for="module" class="form-label">Module</label>
+                <select class="form-select" id="module" aria-describedby="select-module">
+                    <option value="-1">Please select...</option>
+                    <option value="Art and Design">Art and Design</option>
+                    <option value="Biology (Single Science)">Biology (Single Science)</option>
+                    <option value="Business">Business</option>
+                    <option value="Chemistry (Single Science)">Chemistry (Single Science)</option>
+                    <option value="Combined Science">Combined Science</option>
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="Design and Technology">Design and Technology</option>
+                    <option value="Digital Technology">Digital Technology</option>
+                    <option value="English Language">English Language</option>
+                    <option value="English Literature">English Literature</option>
+                    <option value="French">French</option>
+                    <option value="Geography">Geography</option>
+                    <option value="German">German</option>
+                    <option value="History">History</option>
+                    <option value="Home Economics: Food and Nutrition">Home Economics: Food and Nutrition</option>
+                    <option value="Hospitality">Hospitality</option>
+                    <option value="ICT">ICT</option>
+                    <option value="Journalism">Journalism</option>
+                    <option value="Learning for Life and Work">Learning for Life and Work</option>
+                    <option value="Mandarin">Mandarin</option>
+                    <option value="Maths">Maths</option>
+                    <option value="Maths Numeracy">Maths Numeracy</option>
+                    <option value="Media Studies">Media Studies</option>
+                    <option value="Modern Foreign Languages">Modern Foreign Languages</option>
+                    <option value="Moving Image Arts">Moving Image Arts</option>
+                    <option value="Music">Music</option>
+                    <option value="Psychology">Psychology</option>
+                    <option value="Physical Education">Physical Education</option>
+                    <option value="Physics">Physics</option>
+                    <option value="Religious Studies">Religious Studies</option>
+                    <option value="Science">Science</option>
+                </select>
+                <div id="select-module" class="form-text">Enter the module name that you want to base your generate a mock exam on (i.e Science, English or Maths etc)</div>
+            </div>
+            <div class="mb-3 form-field">
+                <label for="module" class="form-label">Topic (optional)</label>
+                <input type="text" class="form-control" id="topic" aria-describedby="topic">
+                <div id="topic" class="form-text">Enter the topic for the module (i.e Biology, Romeo & Julliet or Shapes etc) The topic MUST be related to the module</div>
+            </div>
+            <div class="mb-3 form-field">
+                <label for="grade" class="form-label">Grade</label>
+                <select class="form-select" id="grade" aria-describedby="select-grade">
+                    <option value="-1">Please select...</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                </select>
+                <div id="select-grade" class="form-text">Enter the grade that the mock exam should be generated for</div>
+            </div>
+            <div class="mb-3 form-field">
+                <label for="question-count" class="form-label">Question Count</label>
+                <select class="form-select" id="question-count" aria-describedby="select-question-count">
+                    <option value="-1">Please select...</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+                <div id="select-question-count" class="form-text">Enter the amount of questions for this mock exam</div>
+            </div>
+            <div class="mb-3 form-field">
+                <label for="exam-board" class="form-label">Exam Board</label>
+                <select class="form-select" id="exam-board" aria-describedby="select-exam-board">
+                    <option value="-1">Please select...</option>
+                    <option value="AQA">AQA</option>
+                    <option value="CCEA">CCEA</option>
+                    <option value="Edexcel">Edexcel</option>
+                    <option value="OCR 21st Century">OCR 21st Century</option>
+                    <option value="OCR Gateway">OCR Gateway</option>
+                    <option value="WJEC">WJEC</option>
+                </select>
+                <div id="select-exam-board" class="form-text">Enter the exam board</div>
+            </div>
+            <button id="generate-mock"class="btn btn-primary">Generate Mock Exam</button>
+        </div>
+        <div class="questions-container"></div>
+        
+    </div>
+    <script>
+        $(function(){
+            let examForm = $('.exam_form')
+            let questionsContainer = $('.questions-container')
+            let status = $('.status')
+            let spinner = $('.spinner')
+            let pi="/"
+            spinner.hide()
+            
+
+            $('#generate-mock').on('click', function(){
+                
+                
+                let module = $('#module');
+                let topic = $('#topic');
+                let grade = $('#grade');
+                let questionCount = $('#question-count')
+                let examBoard = $('#exam-board')
+                let error = false;
+                if(module.val() == '-1') {
+                    error=true;
+                    module.addClass('alert alert-warning')
+                }
+                if(examBoard.val() == '-1') {
+                    error=true;
+                    examBoard.addClass('alert alert-warning')
+                }
+                if(grade.val() == '-1') {
+                    error=true;
+                    grade.addClass('alert alert-warning')
+                }
+                if(questionCount.val() == '-1') {
+                    error=true;
+                    questionCount.addClass('alert alert-warning')
+                }
+                if(error) {
+                     status.addClass('alert alert-warning').text('Please answer the below questions to proceed').removeClass('hide')
+                } else {
+                    spinner.show();
+                    examForm.hide();
+                    $('.alert').removeClass('alert alert-warning')
+                    questionsContainer.html('<div class="alert alert-primary mt-5 p-2 text-center" role="alert">Generating your mock exam...</div>').show();
+                    status.addClass('hide')   
+                    $.ajax({
+                        url: pi+'get-mocked',
+                        type: 'POST',
+                        dataType: 'json',
+                        data: {
+                            module: module.val(),
+                            topic: topic.val(),
+                            grade: grade.val(),
+                            question_count: questionCount.val(),
+                            exam_board: examBoard.val()
+                        }
+                    }).done(function(json){
+                        examForm.hide();
+                        let html = "";
+                        if(typeof json.questions !== undefined) {
+                            let questions = json.questions;
+                            let questionCount = questions.length;
+                            html+='<a id="reset-mock" href="#"><i class="fa-solid fa-chevron-left"></i> Reset Mock Exam</a>'
+                            for (let i = 0; i < questionCount; i++) {
+                                html+="<div class='col col-12 question alert alert-warning m-2'>";
+                                
+                                html+="<p class='col col-12'>Estimated minutes to be spent on this question:<br><span class='badge bg-info'"+questions[i].estimated_time+" </span></p>"
+                                html+="<p class='question-text'>"+questions[i].question_text+"</p>";
+                                html+="<span class='badge bg-info'>Max Score: " + questions[i].maximum_score + "</span>";
+                                html+="<textarea class='form-control' id='question-"+ i +"'' rows='3'></textarea>";
+                                html+="</div>";
+                            }
+                            html+='<button id="submit-mock"class="btn btn-primary">Submit Mock Exam</button>';
+                        } else {
+                            html+='There seems to be an error when generating your mock. '
+                            html+='<a id="reset-mock" href="#"><i class="fa-solid fa-chevron-left"></i> Try again</a>'
+                        }
+                        console.log(html)
+                        questionsContainer.html(html).show()
+                        spinner.hide()
+                    })
+                }
+                
+            })
+
+            $(document).on('click', '#reset-mock', function(){
+                examForm.show()
+                questionsContainer.hide()
+            })
+
+            $(document).on('click', '#submit-mock', function(){
+                let questions = []
+                let module = $('#module');
+                let topic = $('#topic');
+                let grade = $('#grade');
+                let questionCount = $('#question-count')
+                let examBoard = $('#exam-board')
+                spinner.show()
+                
+                $('.question').each(function(i,v){
+                    let $this = $(v);
+                    let questionText = $this.find('.question-text')
+                    let questionAnswer = $this.find('textarea')
+
+                    let question = {
+                        question_text: questionText.text(),
+                        question_answer: questionAnswer.val()
+                    }
+
+                    questions.push(question)
+                })
+                questionsContainer.html('<div class="alert alert-primary mt-5 p-2 text-center" role="alert">Marking your mock exam...</div>').show();
+                $.ajax({
+                        url: pi+'check-mocked',
+                        type: 'POST',
+                        dataType: 'json',
+                        data: {
+                            questions: JSON.stringify(questions),
+                            module: module.val(),
+                            topic: topic.val(),
+                            grade: grade.val(),
+                            exam_board: examBoard.val()
+                        }
+                    }).done(function(json){
+                       let feedback = json.feedback;
+                       let grade = json.grade;
+                       let feedbackCount = feedback.length;
+                       
+                       let html='<a id="reset-mock" href="#"><i class="fa-solid fa-chevron-left"></i> Reset Mock Exam</a>';
+                       html+='<p>Grade: <span class="badge bg-info">' + grade + '</span></p>';
+                       for (let i = 0; i < feedbackCount; i++) {
+                            html+="<div class='col col-12 feedback alert alert-warning m-2'>";
+                            
+                            html+="<p class='col col-12'>"+feedback[i].question_text;
+                            html+="<br>"+feedback[i].question_answer
+                            html+="<br><b>Feedback:</b><br>"+feedback[i].feedback
+                            html+="<br><b>Example Answer:</b><br>"+feedback[i].example_answer
+                            html+="</p>"
+                         
+                            html+="</div>";
+                        }
+
+                     
+                        questionsContainer.html(html).show()
+                        spinner.hide()
+                    })
+            })
+
+            
+        })
+
+    </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+</body>
+</html>
